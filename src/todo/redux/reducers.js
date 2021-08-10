@@ -35,14 +35,14 @@ const Reducer = (state = initialState, action) => {
         case "CHIZIQ":
             let chiziqQoyish = [...state.tasks];
             chiziqQoyish[action.payload].cmoplete = !chiziqQoyish[action.payload].cmoplete;
-            return { ...state, chiziqQoyish }
+            return { ...state, tasks: chiziqQoyish }
 
         // so'zlarni o'zgartirish un
         case "EDIT_TASK":
             let editing = [...state.tasks];
             editing[action.payload].edit = true;
             state.value3 = editing[action.payload].main;
-            return { ...state, editing };
+            return { ...state, tasks: editing };
 
 
         // o'zgartirilgan so'zlarni saqlash uchun
@@ -50,7 +50,7 @@ const Reducer = (state = initialState, action) => {
             let name1 = [...state.tasks];
             name1[action.payload].edit = false;
             name1[action.payload].main = state.value3;
-            return { ...state, name1, value3: "" };
+            return { ...state, tasks: name1, value3: "" };
 
         default: return state;
     }
